@@ -20,6 +20,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.getenv("SECRET_KEY")
 DEBUG = os.getenv("DEBUG","False") == "True"
+DIGITAL_OCEAN_KEY_ID = os.getenv ("DIGITAL_OCEAN_KEY_ID")
+DIGITAL_OCEAN_SECRET_KEY = os.getenv ("DIGITAL_OCEAN_SECRET_KEY")
 
 
 ALLOWED_HOSTS = ['*']
@@ -31,9 +33,25 @@ STATICFILES_DIRS = [
     BASE_DIR / 'external_staticfiles',
 ]
 
+# ------------------------
+# MEDIA_FILES_SETTİNGS ⬇️
+# ------------------------
 
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+AWS_ACCESS_KEY_ID = DIGITAL_OCEAN_KEY_ID
+AWS_SECRET_ACCESS_KEY = DIGITAL_OCEAN_SECRET_KEY
+AWS_STORAGE_BUCKET_NAME = "weblogbucket"
+AWS_S3_ENDPOINT_URL = "nyc3.digitaloceanspaces.com"
+AWS_S3_OBJECT_PARAMETERS = {
+    'CacheControl': 'max-age=86400',
+}
+AWS_LOCATION = "media_sub_dir"
+
+MEDIA_URL = f"https://{AWS_STORAGE_BUCKET_NAME}.{AWS_S3_ENDPOINT_URL}/{AWS_LOCATION}/"
+MEDIA_ROOT = os.path.join(BASE_DIR,"mediafiles")
 
 # ------------------------
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -44,6 +62,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     "weblog",
+    "storages",
 ]
 
 MIDDLEWARE = [
