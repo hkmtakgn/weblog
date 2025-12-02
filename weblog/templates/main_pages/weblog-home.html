@@ -3,6 +3,15 @@
 {% block content %}
     <div class="container">
         <h1 class="text-primary mt-3">First Django App | Weblog</h1>
+        <div class="row">
+            {% if products %}
+                {% for product in products %}
+                    <h1 class="text-primary">{{ product.title }}</h1>
+                    <img src="{{ product.media.url }}" alt="" class="img-thumbnail w-25">
+                {% endfor %}
+            {% else %}
+            {% endif %}
+        </div>
     </div>
 {% endblock content %}
 
