@@ -36,7 +36,7 @@ STATICFILES_DIRS = [
 # ------------------------
 # MEDIA_FILES_SETTİNGS ⬇️
 # ------------------------
-
+AWS_DEFAULT_ACL = 'public-read'
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 AWS_ACCESS_KEY_ID = DIGITAL_OCEAN_KEY_ID
 AWS_SECRET_ACCESS_KEY = DIGITAL_OCEAN_SECRET_KEY
