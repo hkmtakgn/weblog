@@ -49,7 +49,13 @@ AWS_LOCATION = "media_sub_dir"
 
 MEDIA_URL = f"https://{AWS_S3_ENDPOINT_URL}/{AWS_STORAGE_BUCKET_NAME}/{AWS_LOCATION}/"
 MEDIA_ROOT = os.path.join(BASE_DIR,"mediafiles")
-
+print('*'*33)
+print(MEDIA_URL)
+print('*'*33)
+print(AWS_ACCESS_KEY_ID)
+print('*'*33)
+print(AWS_SECRET_ACCESS_KEY)
+print('*'*33)
 # ------------------------
 
 # Application definition
