@@ -6,5 +6,6 @@ class ProductAdmin (admin.ModelAdmin):
     list_display = [
         "title",
         "media",
+        "picture",
     ]
 

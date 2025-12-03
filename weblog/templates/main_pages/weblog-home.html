@@ -8,6 +8,7 @@
                 {% for product in products %}
                     <h1 class="text-primary">{{ product.title }}</h1>
                     <img src="{{ product.media.url }}" alt="" class="img-thumbnail w-25">
+                    <img src="{{ product.picture.url }}" alt="" class="img-thumbnail w-25">
                 {% endfor %}
             {% else %}
             {% endif %}
